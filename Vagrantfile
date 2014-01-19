@@ -11,4 +11,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 8000, host: 8000
 
   config.vm.synced_folder ".", "/home/vagrant/crunchbase_webapp"
+
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.manifest_file  = "vagrant.pp"
+  end
 end
