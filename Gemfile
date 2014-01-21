@@ -36,3 +36,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+#
+
+gem 'rspec'
+gem 'pry-debugger', group: :development
+gem 'cucumber-rails', group: :test, require: false
