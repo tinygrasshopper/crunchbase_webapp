@@ -38,6 +38,8 @@ end
 # gem 'debugger', group: [:development, :test]
 #
 
+gem 'webmock', group: :test
+
 gem 'rspec-rails'
 gem 'pry-debugger', group: :development
 gem 'cucumber-rails', group: :test, require: false
