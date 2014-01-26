@@ -19,4 +19,14 @@ describe SearchResult do
       expect(search_result.results).to eq(['first_name' => 'test', 'last_name' => 'test2'])
     end
   end
+
+  context 'companies' do
+    it 'should filter out and return only companies from results' do
+      search_result = described_class.new(page: 1, results: [{name: 'facebook', namespace: 'company'},
+                                                             {name: 'cycle', namespace: 'product'}])
+
+      expect(search_result.companies).to eq([{'name' => 'facebook', 'namespace' => 'company'}])
+
+    end
+  end
 end

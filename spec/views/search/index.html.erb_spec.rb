@@ -1,21 +1,23 @@
 require 'spec_helper'
 
 describe 'search/index.html.erb' do
-  it 'should render name' do
-    assign(:results, double('SearchResult', results: [{'name' => 'Facebook'}, {'name' => 'Google'}]))
+  context 'companies' do
+    it 'should render name' do
+      assign(:results, double('SearchResult', companies: [{'name' => 'Facebook'}, {'name' => 'Google'}]))
 
-    render
+      render
 
-    expect(rendered).to match /Facebook/
-    expect(rendered).to match /Google/
-  end
+      expect(rendered).to match /Facebook/
+      expect(rendered).to match /Google/
+    end
 
-  it 'should render description' do
-    assign(:results, double('SearchResult', results: [{'name' => 'Facebook', 'description' => 'description1'}]))
+    it 'should render description' do
+      assign(:results, double('SearchResult', companies: [{'name' => 'Facebook', 'description' => 'description1'}]))
 
-    render
+      render
 
-    expect(rendered).to match /description1/
+      expect(rendered).to match /description1/
+    end
   end
 
 

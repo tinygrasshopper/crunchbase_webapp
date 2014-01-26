@@ -15,5 +15,11 @@ class SearchResult
     @params[:results]
   end
 
+  def companies
+    @params[:results].select do |item|
+      item['namespace'] == 'company'
+    end
+  end
+
 
 end

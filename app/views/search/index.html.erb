@@ -4,7 +4,7 @@
 <% end %>
 <% if @results.present? %>
     <ul class='companies'>
-      <% @results.results.each do |item| %>
+      <% @results.companies.each do |item| %>
           <li>
             <div class='name'><%= item['name'] %></div>
             <div class='description'><%= item['description'] %></div>
