@@ -11,16 +11,27 @@ describe Company do
     end
   end
 
-  subject(:company) { Company.new(x: :a) }
+  subject(:params) { {'x' => :a, 'overview' => 'A social network'} }
+  subject(:company) { Company.new(params) }
   context 'equality' do
     it 'should be equal to a company initalized with the same params' do
-      expect(company).to eq(Company.new(x: :a))
+      expect(company).to eq(Company.new(params))
       expect(company).not_to eq(Company.new(x: :b))
       expect(company).not_to eq('a string')
     end
   end
 
   it 'should return params' do
-    expect(company.params).to eq(x: :a)
+    expect(company.params).to eq(params)
+  end
+
+  it 'should return the overview from the params' do
+    expect(company.overview).to eq('A social network')
+  end
+
+
+  it 'should return the overview from the params with string keys' do
+    company = Company.new('overview' => 'A social network')
+    expect(company.overview).to eq('A social network')
   end
 end

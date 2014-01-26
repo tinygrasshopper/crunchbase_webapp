@@ -7,11 +7,15 @@ class Company
   end
 
   def initialize params
-    @params = params
+    @params = params.with_indifferent_access
   end
 
   def params
     @params
+  end
+
+  def overview
+    @params[:overview]
   end
 
 
