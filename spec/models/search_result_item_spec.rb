@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe SearchResultItem do
-  subject {described_class.new(name: 'test', description: 'description', namespace: 'namespace')}
+  subject { described_class.new(name: 'test', description: 'description', namespace: 'namespace') }
 
   it 'should return name' do
     expect(subject.name).to eq('test')
@@ -23,10 +23,26 @@ describe SearchResultItem do
   end
 
   it 'should test if an search item is a company' do
-    described_class.new(namespace: 'company').company?
+    expect(described_class.new(namespace: 'company')).to be_company
   end
 
   it 'should test if an search item is a product' do
-    described_class.new(namespace: 'product').product?
+    expect(described_class.new(namespace: 'product')).to be_product
+  end
+
+  it 'should get the first image as the image for the result item' do
+    item = described_class.new(image: {'available_sizes' => [
+        [[120, 150],
+         'assets/images/resized/0033/5817/335817v2-max-150x150.jpg'],
+        [[200, 250],
+         'assets/images/resized/0033/5817/335817v2-max-250x250.jpg']
+    ]})
+    expect(item.image).to eq('assets/images/resized/0033/5817/335817v2-max-150x150.jpg')
+  end
+
+  it 'should return nil if image absent' do
+    item = described_class.new(image: nil)
+
+    expect(item.image).to be_nil
   end
 end

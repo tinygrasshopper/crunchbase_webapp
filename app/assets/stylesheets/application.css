@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
  */
+.list-group-item.media {
+    margin-top: 0px;
+}

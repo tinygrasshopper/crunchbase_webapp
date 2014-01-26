@@ -21,6 +21,4 @@ class SearchResult
   def products
     results.select(&:product?)
   end
-
-
 end

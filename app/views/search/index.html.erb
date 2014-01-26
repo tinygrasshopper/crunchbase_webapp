@@ -1,19 +1,36 @@
 <% if @results.present? %>
-    <ul class='companies col-md-4 media-list'>
+    <div class='col-md-6'>
       <h3>Companies</h3>
-      <% @results.companies.each do |item| %>
-          <li class=' media'>
-            <h5 class='name media-heading'><%= item.name %></h5>
-            <div class='description'><%= item.description %></div>
-          </li>
-      <% end %>
-    </ul>
-    <ul class='products col-md-4 media-list'>
+
+      <div class='companies list-group'>
+        <% @results.companies.each do |item| %>
+            <a href="#" class='list-group-item media'>
+              <div class="pull-right">
+                <img src='<%= crunchbase_image_url item.image %>'/>
+              </div>
+              <div>
+                <h5 class='name '><%= item.name %></h5>
+
+                <div class='description'><%= item.description %></div>
+              </div>
+            </a>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-md-6'>
       <h3>Products</h3>
-      <% @results.products.each do |item| %>
-          <li class=' media'>
-            <h5 class='name media-heading'><%= item.name %></h5>
-          </li>
-      <% end %>
-    </ul>
+
+      <div class='products list-group'>
+        <% @results.products.each do |item| %>
+            <a href="#" class='list-group-item media'>
+              <div class="pull-right">
+                <img class="" src='<%= crunchbase_image_url item.image %>'/>
+              </div>
+              <div>
+                <h5 class='name'><%= item.name %></h5>
+              </div>
+            </a>
+        <% end %>
+      </div>
+    </div>
 <% end %>

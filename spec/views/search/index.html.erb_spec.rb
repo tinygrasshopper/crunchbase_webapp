@@ -3,7 +3,8 @@ require 'spec_helper'
 describe 'search/index.html.erb' do
   context 'companies' do
     it 'should render name' do
-      assign(:results, double('SearchResult', products: [], companies: [SearchResultItem.new('name' => 'Facebook'), SearchResultItem.new('name' => 'Google')]))
+      assign(:results, double('SearchResult', products: [], companies: [double(SearchResultItem, image: nil, name: 'Facebook', description: nil),
+                                                                        double(SearchResultItem, image: nil, name: 'FacGoogleebook', description: nil)]))
 
       render
 
@@ -12,22 +13,39 @@ describe 'search/index.html.erb' do
     end
 
     it 'should render description' do
-      assign(:results, double('SearchResult', products: [], companies: [SearchResultItem.new('name' => 'Facebook', 'description' => 'description1')]))
+      assign(:results, double('SearchResult', products: [], companies: [double(SearchResultItem, image: nil, name: 'Facebook', description: 'description1')]))
 
       render
 
       expect(rendered).to match /description1/
     end
+
+    it 'should render image' do
+      assign(:results, double('SearchResult', products: [], companies: [double(SearchResultItem, image: 'one.jpg', name: nil, description: nil)]))
+
+      render
+
+      expect(rendered).to match /one.jpg/
+    end
   end
 
   context 'products' do
     it 'should render name' do
-      assign(:results, double('SearchResult', companies: [], products: [SearchResultItem.new('name' => 'Car'), SearchResultItem.new('name' => 'Cycle')]))
+      assign(:results, double('SearchResult', companies: [], products: [double(SearchResultItem, image: nil, name: 'Car', description: nil),
+                                                                        double(SearchResultItem, image: nil, name: 'Cycle', description: nil)]))
 
       render
 
       expect(rendered).to match /Cycle/
       expect(rendered).to match /Car/
+    end
+
+    it 'should render image' do
+      assign(:results, double('SearchResult', products: [double(SearchResultItem, image: 'one.jpg', name: nil, description: nil)], companies: []))
+
+      render
+
+      expect(rendered).to match /one.jpg/
     end
   end
 

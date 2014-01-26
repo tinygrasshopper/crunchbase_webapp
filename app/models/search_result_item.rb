@@ -1,11 +1,18 @@
 class SearchResultItem
-  attr_reader :name, :description, :namespace
-
   def initialize params
-    params = params.with_indifferent_access
-    @name = params[:name]
-    @description = params[:description]
-    @namespace = params[:namespace]
+    @params = params.with_indifferent_access
+  end
+
+  def name
+    @params[:name]
+  end
+
+  def description
+    @params[:description]
+  end
+
+  def namespace
+    @params[:namespace]
   end
 
   def == other
@@ -21,5 +28,9 @@ class SearchResultItem
 
   def product?
     namespace == 'product'
+  end
+
+  def image
+    @params[:image][:available_sizes].first.last unless @params[:image].nil?
   end
 end
