@@ -15,6 +15,10 @@ class SearchResultItem
     @params[:namespace]
   end
 
+  def id
+    @params[:permalink]
+  end
+
   def == other
     other.class == self.class &&
         other.name == self.name &&

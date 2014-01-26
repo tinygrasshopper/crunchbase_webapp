@@ -5,10 +5,11 @@ end
 def stub_requests_for_search
   stub_request(:get, 'http://api.crunchbase.com/v/1/search.js').
       with(query: {query: 'facebook', api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'}).
-      to_return(body: File.read(Rails.root.join('features/mock_responses/facebook_page_1.json')))
+      to_return(body: File.read(Rails.root.join('features/mock_responses/search_facebook_page_1.json')))
 end
 
 When(/^I search for "([^"]*)"$/) do |term|
+  visit(root_path)
   stub_requests_for_search()
 
   fill_in 'query', with: term
@@ -23,4 +24,7 @@ Then(/^I should see the following in the (companies|products) result set$/) do |
     expect(find(".#{type}").all('.name').collect(&:text)).to include(row.first)
     expect(find(".#{type}").all('.description').collect(&:text)).to include(row.second) if type == 'companies'
   end
+end
+When(/^I click on the "([^"]*)" in the (companies|products) result set$/) do |text, type|
+  find(".#{type}").click_on(text)
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe SearchResultItem do
-  subject { described_class.new(name: 'test', description: 'description', namespace: 'namespace') }
+  subject { described_class.new(name: 'test', description: 'description', namespace: 'namespace', permalink: 'facebook') }
 
   it 'should return name' do
     expect(subject.name).to eq('test')
@@ -12,6 +12,10 @@ describe SearchResultItem do
 
   it 'should return the namespace' do
     expect(subject.namespace).to eq('namespace')
+  end
+
+  it 'should return the id' do
+    expect(subject.id).to eq('facebook')
   end
 
   it 'should be equal to search result item with the same name, description and namespace' do
