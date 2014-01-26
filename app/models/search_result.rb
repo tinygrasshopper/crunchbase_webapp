@@ -1,6 +1,9 @@
 class SearchResult
+  attr_reader :results
+
   def initialize params
     @params = params.with_indifferent_access
+    @results = @params[:results].collect { |hash| SearchResultItem.new(hash) }
   end
 
   def == other
@@ -11,20 +14,12 @@ class SearchResult
     @params[:page]
   end
 
-  def results
-    @params[:results]
-  end
-
   def companies
-    @params[:results].select do |item|
-      item['namespace'] == 'company'
-    end
+    results.select(&:company?)
   end
 
   def products
-    @params[:results].select do |item|
-      item['namespace'] == 'product'
-    end
+    results.select(&:product?)
   end
 
 

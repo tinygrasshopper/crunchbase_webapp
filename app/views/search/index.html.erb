@@ -1,18 +1,18 @@
 <% if @results.present? %>
     <ul class='companies col-md-4 media-list'>
-      <h2>Companies</h2>
+      <h3>Companies</h3>
       <% @results.companies.each do |item| %>
           <li class=' media'>
-            <h4 class='name media-heading'><%= item['name'] %></h4>
-            <div class='description'><%= item['description'] %></div>
+            <h5 class='name media-heading'><%= item.name %></h5>
+            <div class='description'><%= item.description %></div>
           </li>
       <% end %>
     </ul>
     <ul class='products col-md-4 media-list'>
-      <h2>Products</h2>
+      <h3>Products</h3>
       <% @results.products.each do |item| %>
           <li class=' media'>
-            <h4 class='name media-heading'><%= item['name'] %></h4>
+            <h5 class='name media-heading'><%= item.name %></h5>
           </li>
       <% end %>
     </ul>
