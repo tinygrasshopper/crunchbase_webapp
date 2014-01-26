@@ -18,9 +18,9 @@ end
 Then(/^I should see (\d+) results in the (companies|products) result set$/) do |count, result_set|
   expect(all(".#{result_set} li").size).to eq count.to_i
 end
-Then(/^I should see the following company results$/) do |table|
+Then(/^I should see the following in the (companies|products) result set$/) do |type, table|
   table.raw.drop(1).each do |row|
-    expect(find('.companies').all('.name').collect(&:text)).to include(row.first)
-    expect(find('.companies').all('.description').collect(&:text)).to include(row.second)
+    expect(find(".#{type}").all('.name').collect(&:text)).to include(row.first)
+    expect(find(".#{type}").all('.description').collect(&:text)).to include(row.second) if type == 'companies'
   end
 end

@@ -21,5 +21,11 @@ class SearchResult
     end
   end
 
+  def products
+    @params[:results].select do |item|
+      item['namespace'] == 'product'
+    end
+  end
+
 
 end

@@ -11,5 +11,11 @@
           </li>
       <% end %>
     </ul>
-    <ul class='products'></ul>
+    <ul class='products'>
+      <% @results.products.each do |item| %>
+          <li>
+            <div class='name'><%= item['name'] %></div>
+          </li>
+      <% end %>
+    </ul>
 <% end %>
