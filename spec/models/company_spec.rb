@@ -11,7 +11,7 @@ describe Company do
     end
   end
 
-  subject(:params) { {'x' => :a, 'overview' => 'A social network'} }
+  subject(:params) { {'x' => :a, 'overview' => 'A social network', 'name' => 'Facebook', 'crunchbase_url' => 'http://www.crunchbase.com/company/facebook'} }
   subject(:company) { Company.new(params) }
   context 'equality' do
     it 'should be equal to a company initalized with the same params' do
@@ -65,6 +65,10 @@ describe Company do
 
   it 'should return params' do
     expect(company.params).to eq(params)
+  end
+
+  it 'should return url' do
+    expect(company.url).to eq('http://www.crunchbase.com/company/facebook')
   end
 
   it 'should return the overview from the params' do

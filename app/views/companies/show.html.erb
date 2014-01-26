@@ -1,15 +1,24 @@
+<div class="page-header">
+  <h1><%= @company.name %></h1>
+</div>
 <div class='col-md-6'>
-  <%= crunchbase_image @company.image %>
+  <div class="media company_image">
+    <%= crunchbase_image @company.image %>
+  </div>
   <div class='overview'>
     <%= @company.overview.html_safe %>
   </div>
+
+  <a href="<%= @company.url %>" class="btn btn-default">More Information</a>
 </div>
 
 <div class='col-md-6'>
   <div class="people list-group">
     <% @company.people.each do |person| %>
         <a class='person list-group-item' href="<%= crunchbase_person_url(person.id) %>">
-          <h5><div class='role'><%= person.role %></div></h5>
+          <h5>
+            <div class='role'><%= person.role %></div>
+          </h5>
           <div class='first_name'><%= person.first_name %></div>
           <div class='last_name'><%= person.last_name %></div>
         </a>

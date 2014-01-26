@@ -26,6 +26,14 @@ class Company
     @params[:image][:available_sizes].last.last unless @params[:image].nil?
   end
 
+  def name
+    @params[:name]
+  end
+
+  def url
+    @params[:crunchbase_url]
+  end
+
   def == other
     self.class ==other.class && self.params == other.params
   end
