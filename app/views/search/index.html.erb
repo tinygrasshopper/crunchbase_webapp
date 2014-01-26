@@ -2,5 +2,14 @@
     <%= text_field_tag(:query) %>
     <%= submit_tag('search') %>
 <% end %>
-<ul class='companies'></ul>
-<ul class='products'></ul>
+<% if @results.present? %>
+    <ul class='companies'>
+      <% @results.results.each do |item| %>
+          <li>
+            <div class='name'><%= item['name'] %></div>
+            <div class='description'><%= item['description'] %></div>
+          </li>
+      <% end %>
+    </ul>
+    <ul class='products'></ul>
+<% end %>
