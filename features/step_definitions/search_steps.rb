@@ -12,11 +12,11 @@ When(/^I search for "([^"]*)"$/) do |term|
   stub_requests_for_search()
 
   fill_in 'query', with: term
-  click_on 'search'
+  click_on 'Search'
 end
 
 Then(/^I should see (\d+) results in the (companies|products) result set$/) do |count, result_set|
-  expect(all(".#{result_set} li").size).to eq count.to_i
+  expect(all(".#{result_set} .name").size).to eq count.to_i
 end
 Then(/^I should see the following in the (companies|products) result set$/) do |type, table|
   table.raw.drop(1).each do |row|

@@ -1,20 +1,18 @@
-<%= form_tag('/', method: 'get') do %>
-    <%= text_field_tag(:query) %>
-    <%= submit_tag('search') %>
-<% end %>
 <% if @results.present? %>
-    <ul class='companies'>
+    <ul class='companies col-md-4 media-list'>
+      <h2>Companies</h2>
       <% @results.companies.each do |item| %>
-          <li>
-            <div class='name'><%= item['name'] %></div>
+          <li class=' media'>
+            <h4 class='name media-heading'><%= item['name'] %></h4>
             <div class='description'><%= item['description'] %></div>
           </li>
       <% end %>
     </ul>
-    <ul class='products'>
+    <ul class='products col-md-4 media-list'>
+      <h2>Products</h2>
       <% @results.products.each do |item| %>
-          <li>
-            <div class='name'><%= item['name'] %></div>
+          <li class=' media'>
+            <h4 class='name media-heading'><%= item['name'] %></h4>
           </li>
       <% end %>
     </ul>
