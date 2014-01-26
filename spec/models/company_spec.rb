@@ -45,6 +45,24 @@ describe Company do
     end
   end
 
+  context 'image' do
+    it 'should return the last image' do
+      company = described_class.new(image: {'available_sizes' => [
+          [[120, 150],
+           'assets/images/resized/0033/5817/335817v2-max-150x150.jpg'],
+          [[200, 250],
+           'assets/images/resized/0033/5817/335817v2-max-250x250.jpg']
+      ]})
+      expect(company.image).to eq('assets/images/resized/0033/5817/335817v2-max-250x250.jpg')
+    end
+
+    it 'should return nil if image absent' do
+      company = described_class.new(image: nil)
+
+      expect(company.image).to be_nil
+    end
+  end
+
   it 'should return params' do
     expect(company.params).to eq(params)
   end

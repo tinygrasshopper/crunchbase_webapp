@@ -22,6 +22,9 @@ class Company
     @params[:relationships].collect { |hash| Person.new(hash) }
   end
 
+  def image
+    @params[:image][:available_sizes].last.last unless @params[:image].nil?
+  end
 
   def == other
     self.class ==other.class && self.params == other.params

@@ -1,6 +1,6 @@
 Feature: Company Details
 
-  Scenario: Search for a term
+  Scenario: View company details
     Given I search for "facebook"
     When I click on the "Facebook" in the companies result set
     Then I should be on the "facebook" company page
