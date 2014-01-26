@@ -21,6 +21,30 @@ describe Company do
     end
   end
 
+  context 'people' do
+    it 'should return the people associated' do
+      company = Company.new relationships: [{
+                                                'is_past' => false,
+                                                'title' => 'VP of Engineering',
+                                                'person' => {
+                                                    'first_name' => 'Peter',
+                                                    'last_name' => 'Deng',
+                                                    'permalink' => 'peter-deng'
+                                                }
+                                            }]
+
+      expect(company.people).to eq([Person.new({
+                                                   'is_past' => false,
+                                                   'title' => 'VP of Engineering',
+                                                   'person' => {
+                                                       'first_name' => 'Peter',
+                                                       'last_name' => 'Deng',
+                                                       'permalink' => 'peter-deng'
+                                                   }
+                                               })])
+    end
+  end
+
   it 'should return params' do
     expect(company.params).to eq(params)
   end

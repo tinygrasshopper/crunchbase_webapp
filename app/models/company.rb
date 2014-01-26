@@ -18,6 +18,10 @@ class Company
     @params[:overview]
   end
 
+  def people
+    @params[:relationships].collect { |hash| Person.new(hash) }
+  end
+
 
   def == other
     self.class ==other.class && self.params == other.params
