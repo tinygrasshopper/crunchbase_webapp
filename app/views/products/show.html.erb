@@ -1,1 +1,14 @@
 <%= render 'common/overview', entity: @product %>
+<div class='col-md-6'>
+  <div class="milestones list-group">
+    <% @product.milestones.each do |milestone| %>
+        <a class='person list-group-item' href="<%= milestone.url %>">
+          <h5>
+            <div class='description'><%= milestone.description %></div>
+          </h5>
+          <div class='date'><%= milestone.date %></div>
+          <div class='source_description'><%= milestone.source_description %></div>
+        </a>
+    <% end %>
+  </div>
+</div>

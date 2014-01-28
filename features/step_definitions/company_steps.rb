@@ -8,10 +8,10 @@ end
 When(/^I should see "([^"]*)" in overview$/) do |text|
   expect(find('.overview').text).to match /#{text}/
 end
-When(/^I should see the following in the people list$/) do |table|
-  table.raw.drop(1).each do |row|
-    expect(find('.people').all('.role').collect(&:text)).to include(row.first)
-    expect(find('.people').all('.first_name').collect(&:text)).to include(row.second)
-    expect(find('.people').all('.last_name').collect(&:text)).to include(row.third)
+When(/^I should see the following in the (people|milestones) list$/) do |type, table|
+  table.hashes.each do |hash|
+    hash.each do |key, value|
+      expect(find(".#{type}").all(".#{key}").collect(&:text)).to include(value)
+    end
   end
 end
