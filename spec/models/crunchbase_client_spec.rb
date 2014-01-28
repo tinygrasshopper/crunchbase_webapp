@@ -18,10 +18,10 @@ describe CrunchbaseClient do
         }
     ]}'
       expect(RestClient).to receive(:get)
-                            .with('http://api.crunchbase.com/v/1/search.js', params: {query: 'test', api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'})
+                            .with('http://api.crunchbase.com/v/1/search.js', params: {query: 'test', api_key: 'vnqmjpk7xb3cx5tqyh4s5j64', page: '2'})
                             .and_return(json_response)
 
-      results = subject.search 'test'
+      results = subject.search 'test', '2'
 
       expect(results).to eq(SearchResult.new(JSON.parse(json_response)))
     end

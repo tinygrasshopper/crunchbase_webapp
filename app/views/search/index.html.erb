@@ -1,4 +1,9 @@
 <% if @results.present? %>
     <%= render 'search/result_set', set: 'companies', results: @results.companies %>
     <%= render 'search/result_set', set: 'products', results: @results.products %>
+
+    <ul class="pager col-md-12">
+      <li><a href="<%= root_path(page: @results.page - 1, query: params[:query]).html_safe %>">Previous</a></li>
+      <li><a href="<%= root_path(page: @results.page + 1, query: params[:query]).html_safe %>">Next</a></li>
+    </ul>
 <% end %>

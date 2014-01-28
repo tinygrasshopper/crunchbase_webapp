@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'search/index.html.erb' do
   context 'companies' do
     it 'should render name' do
-      assign(:results, double('SearchResult', products: [], companies: [double(SearchResultItem, id: 1, image: nil, name: 'Facebook', description: nil),
-                                                                        double(SearchResultItem, id: 1, image: nil, name: 'FacGoogleebook', description: nil)]))
+      assign(:results, double('SearchResult', page: 2, products: [], companies: [double(SearchResultItem, id: 1, image: nil, name: 'Facebook', description: nil),
+                                                                                 double(SearchResultItem, id: 1, image: nil, name: 'FacGoogleebook', description: nil)]))
 
       render
 
@@ -13,7 +13,7 @@ describe 'search/index.html.erb' do
     end
 
     it 'should render description' do
-      assign(:results, double('SearchResult', products: [], companies: [double(SearchResultItem, id: 1, image: nil, name: 'Facebook', description: 'description1')]))
+      assign(:results, double('SearchResult', page: 2, products: [], companies: [double(SearchResultItem, id: 1, image: nil, name: 'Facebook', description: 'description1')]))
 
       render
 
@@ -21,7 +21,7 @@ describe 'search/index.html.erb' do
     end
 
     it 'should render image' do
-      assign(:results, double('SearchResult', products: [], companies: [double(SearchResultItem, id: 1, image: 'one.jpg', name: nil, description: nil)]))
+      assign(:results, double('SearchResult', page: 2, products: [], companies: [double(SearchResultItem, id: 1, image: 'one.jpg', name: nil, description: nil)]))
 
       render
 
@@ -31,8 +31,8 @@ describe 'search/index.html.erb' do
 
   context 'products' do
     it 'should render name' do
-      assign(:results, double('SearchResult', companies: [], products: [double(SearchResultItem, id: 1, image: nil, name: 'Car', description: nil),
-                                                                        double(SearchResultItem, id: 1, image: nil, name: 'Cycle', description: nil)]))
+      assign(:results, double('SearchResult', page: 2, companies: [], products: [double(SearchResultItem, id: 1, image: nil, name: 'Car', description: nil),
+                                                                                 double(SearchResultItem, id: 1, image: nil, name: 'Cycle', description: nil)]))
 
       render
 
@@ -41,11 +41,31 @@ describe 'search/index.html.erb' do
     end
 
     it 'should render image' do
-      assign(:results, double('SearchResult', products: [double(SearchResultItem, id: 1, image: 'one.jpg', name: nil, description: nil)], companies: []))
+      assign(:results, double('SearchResult', page: 2, products: [double(SearchResultItem, id: 1, image: 'one.jpg', name: nil, description: nil)], companies: []))
 
       render
 
       expect(rendered).to match /one.jpg/
+    end
+  end
+
+  context 'pager' do
+    it 'should render the previous page link' do
+      params[:query]  = 'test'
+      assign(:results, double('SearchResult', page: 2, products: [double(SearchResultItem, id: 1, image: 'one.jpg', name: nil, description: nil)], companies: []))
+
+      render
+
+      expect(rendered).to match /#{root_path(page: 1, query: 'test')}/
+    end
+
+    it 'should render the next page link' do
+      params[:query]  = 'test'
+      assign(:results, double('SearchResult', page: 2, products: [double(SearchResultItem, id: 1, image: 'one.jpg', name: nil, description: nil)], companies: []))
+
+      render
+
+      expect(rendered).to match /#{root_path(page: 3, query: 'test')}/
     end
   end
 

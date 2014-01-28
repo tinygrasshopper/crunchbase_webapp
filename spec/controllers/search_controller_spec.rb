@@ -3,7 +3,18 @@ describe SearchController do
   it 'should delegate search to the CrunchBaseClient' do
     results = double(SearchResult)
     expect_any_instance_of(CrunchbaseClient).to receive(:search).
-                                                    with('test').
+                                                    with('test', '3').
+                                                    and_return(results)
+
+    get :index, query: 'test', page: 3
+
+    expect(assigns(:results)).to eq(results)
+  end
+
+  it 'should use the default page of 1' do
+    results = double(SearchResult)
+    expect_any_instance_of(CrunchbaseClient).to receive(:search).
+                                                    with('test', '1').
                                                     and_return(results)
 
     get :index, query: 'test'
@@ -17,7 +28,7 @@ describe SearchController do
     get :index, query: ''
   end
 
-  it 'should delegate search to the CrunchBaseClient' do
+  it 'should render the index view' do
     expect_any_instance_of(CrunchbaseClient).to receive(:search)
 
     get :index, query: 'test'

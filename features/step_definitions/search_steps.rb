@@ -2,10 +2,13 @@ Given(/^I am on the home page$/) do
   visit(root_path)
 end
 
-def stub_requests_for_search
-  stub_request(:get, 'http://api.crunchbase.com/v/1/search.js').
-      with(query: {query: 'facebook', api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'}).
-      to_return(body: File.read(Rails.root.join('features/mock_responses/search_facebook_page_1.json')))
+def stub_requests_for_search(term)
+  Dir.glob(Rails.root.join("features/mock_responses/search_#{term}_page_*.json")).each_with_index do |path, index|
+    stub_request(:get, 'http://api.crunchbase.com/v/1/search.js').
+        with(query: {query: term, api_key: 'vnqmjpk7xb3cx5tqyh4s5j64', page: index.next.to_s}).
+        to_return(body: File.read(path))
+  end
+
 end
 
 def stub_requests_for_company
@@ -24,7 +27,7 @@ end
 
 When(/^I search for "([^"]*)"$/) do |term|
   visit(root_path)
-  stub_requests_for_search()
+  stub_requests_for_search(term)
 
   fill_in 'query', with: term
   click_on 'Search'
@@ -47,4 +50,7 @@ When(/^I click on the "([^"]*)" in the (companies|products) result set$/) do |te
   end
 
   find(".#{type}").click_on(text)
+end
+Then(/^I goto the next page$/) do
+  click_on 'Next'
 end
