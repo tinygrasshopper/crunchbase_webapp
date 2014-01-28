@@ -10,4 +10,14 @@ describe SearchHelper do
       expect(crunchbase_image(nil)).to eq(nil)
     end
   end
+
+  describe :entity_path do
+    it 'should return product path for products' do
+      expect(entity_path('products', 'name')).to eq(product_path('name'))
+    end
+
+    it 'should return company path for products' do
+      expect(entity_path('companies', 'name')).to eq(company_path('name'))
+    end
+  end
 end

@@ -15,6 +15,13 @@ def stub_requests_for_company
 
 end
 
+def stub_requests_for_product
+  stub_request(:get, 'http://api.crunchbase.com/v/1/product/facebook-like-button.js').
+      with(query: {api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'}).
+      to_return(body: File.read(Rails.root.join('features/mock_responses/product_facebook_like_button.json')))
+
+end
+
 When(/^I search for "([^"]*)"$/) do |term|
   visit(root_path)
   stub_requests_for_search()
@@ -33,7 +40,11 @@ Then(/^I should see the following in the (companies|products) result set$/) do |
   end
 end
 When(/^I click on the "([^"]*)" in the (companies|products) result set$/) do |text, type|
-  stub_requests_for_company()
+  if type == 'companies'
+    stub_requests_for_company()
+  else
+    stub_requests_for_product()
+  end
 
-   find(".#{type}").click_on(text)
+  find(".#{type}").click_on(text)
 end

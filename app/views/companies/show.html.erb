@@ -1,17 +1,4 @@
-<div class="page-header">
-  <h1><%= @company.name %></h1>
-</div>
-<div class='col-md-6'>
-  <div class="media company_image">
-    <%= crunchbase_image @company.image %>
-  </div>
-  <div class='overview'>
-    <%= @company.overview.html_safe %>
-  </div>
-
-  <a href="<%= @company.url %>" class="btn btn-default">More Information</a>
-</div>
-
+<%= render 'common/overview', entity: @company %>
 <div class='col-md-6'>
   <div class="people list-group">
     <% @company.people.each do |person| %>

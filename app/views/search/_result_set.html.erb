@@ -3,7 +3,7 @@
 
   <div class='<%= set %> list-group'>
     <% results.each do |item| %>
-        <a href="<%= company_path(item.id) %>" class='list-group-item media'>
+        <a href="<%= entity_path(set, item.id) %>" class='list-group-item media'>
           <div class="pull-right">
             <%= crunchbase_image item.image %>
           </div>

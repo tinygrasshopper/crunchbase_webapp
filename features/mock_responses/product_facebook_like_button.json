@@ -1,0 +1,48 @@
+{"name": "Facebook 'Like' Button",
+    "permalink": "facebook-like-button",
+    "crunchbase_url": "http://www.crunchbase.com/product/facebook-like-button",
+    "homepage_url": "http://www.mageplace.com/facebook/facebook-like-button.html",
+    "blog_url": "http://www.mageplace.com/news-blog.html",
+    "blog_feed_url": "",
+    "twitter_username": "mageplace",
+    "stage_code": "live",
+    "deadpooled_url": "",
+    "invite_share_url": "",
+    "tag_list": "facebook-like-button, facebook-like-extension, facebook-like, like-extension, social-extension",
+    "alias_list": null,
+    "deadpooled_year": null,
+    "deadpooled_month": null,
+    "deadpooled_day": null,
+    "launched_year": 2011,
+    "launched_month": 4,
+    "launched_day": 14,
+    "created_at": "Mon Sep 09 11:03:37 UTC 2013",
+    "updated_at": "Tue Dec 24 13:14:18 UTC 2013",
+    "overview": "\u003Cp\u003EWhen user clicks the Facebook Like button it will automatically place the main product/category image and product/category name on the user\u2019s Facebook wall but also will provide them with ability to add comment to the record. Button can be placed on any pages of Magento store \u2013 product pages, CMS pages, category pages or Home page. \u003C/p\u003E\n\n\u003Cp\u003E\u2013 Supports HTML5, iFrame and XFBML buttons;\n\u2013 Box and button with count of likes as well as standard layout;\u003C/p\u003E\n\n\u003Cul\u003E\n\u003Cli\u003EAbility to show profile images of Facebook users;\u003C/li\u003E\n\u003Cli\u003EAbility to adjust the button to your custom design (button color scheme, font, height/ width and custom verb to display);\u003C/li\u003E\n\u003Cli\u003EIndicate app id or admin id and track the button usage on Facebook;\u003C/li\u003E\n\u003Cli\u003EFast installation and set up of the extension with default settings.\u003C/li\u003E\n\u003C/ul\u003E\n\n\u003Cp\u003EMagento Facebook Like button comes with Facebook Send Button. Using this button Facebook users can send message to their friend directly from your Magento store page: this message will contain link to your page and product. \u003C/p\u003E\n\n\u003Cp\u003EThe MagePlace Facebook Like Button supports Magento Community and Enterprise editions.\u003C/p\u003E",
+    "image": {
+        "available_sizes": [
+            [
+                [120,
+                    150],
+                "assets/images/resized/0033/5817/335817v2-max-150x150.jpg"
+            ],
+            [
+                [200,
+                    250],
+                "assets/images/resized/0033/5817/335817v2-max-250x250.jpg"
+            ],
+            [
+                [200,
+                    250],
+                "assets/images/resized/0033/5817/335817v2-max-450x450.jpg"
+            ]
+        ],
+        "attribution": null
+    },
+    "company": {
+        "name": "MagePlace",
+        "permalink": "mageplace"
+    },
+    "milestones": [],
+    "video_embeds": [],
+    "external_links": []}
