@@ -6,6 +6,7 @@ class AggregatedSearchResult
     @page = page
     @companies = []
     @products = []
+    @last = false
   end
 
   def first?
@@ -21,11 +22,15 @@ class AggregatedSearchResult
   end
 
   def append_companies! results
-    @companies.concat(results[0...remaining_companies])
+    remaining = remaining_companies
+    @companies.concat(results[0...remaining])
+    results[remaining...results.size] || []
   end
 
   def append_products! results
-    @products.concat(results[0...remaining_products])
+    remaining = remaining_products
+    @products.concat(results[0...remaining])
+    results[remaining...results.size] || []
   end
 
   def full?

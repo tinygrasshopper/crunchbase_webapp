@@ -30,5 +30,5 @@ Feature: Search
     And I should see 10 results in the products result set
     Then I goto the next page
     Then I should see 0 results in the companies result set
-    And I should see 7 results in the products result set
+    And I should see 10 results in the products result set
 
