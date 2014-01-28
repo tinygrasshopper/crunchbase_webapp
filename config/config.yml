@@ -1,5 +1,6 @@
 defaults: &defaults
   crunchbase_key: vnqmjpk7xb3cx5tqyh4s5j64
+  aggregator_per_page: 10
 
 development:
   <<: *defaults
