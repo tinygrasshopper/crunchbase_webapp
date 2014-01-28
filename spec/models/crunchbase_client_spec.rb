@@ -17,7 +17,7 @@ describe CrunchbaseClient do
             "image": null
         }
     ]}'
-      expect(RestClient).to receive(:get)
+      expect(CachedHttpClient).to receive(:get)
                             .with('http://api.crunchbase.com/v/1/search.js', params: {query: 'test', api_key: APP_CONFIG['crunchbase_key'], page: '2'})
                             .and_return(json_response)
 
@@ -32,7 +32,7 @@ describe CrunchbaseClient do
       json_response = '{"name": "facebook",
                         "permalink": "facebook"}'
 
-      expect(RestClient).to receive(:get)
+      expect(CachedHttpClient).to receive(:get)
                             .with('http://api.crunchbase.com/v/1/company/facebook.js', params: {api_key: APP_CONFIG['crunchbase_key']})
                             .and_return(json_response)
 

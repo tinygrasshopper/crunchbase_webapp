@@ -9,7 +9,7 @@ class CrunchbaseClient
 
   private
   def http_get(url, params={})
-    RestClient.get(url, params: {api_key: APP_CONFIG['crunchbase_key']}.merge(params))
+    CachedHttpClient.get(url, params: {api_key: APP_CONFIG['crunchbase_key']}.merge(params))
   end
 
   def entity_url(permalink, type)
