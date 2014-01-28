@@ -1,3 +1,2 @@
-class Product
-
+class Product <CrunchbaseEntity
 end
