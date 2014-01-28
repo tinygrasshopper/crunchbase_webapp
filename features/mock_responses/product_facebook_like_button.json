@@ -43,6 +43,25 @@
         "name": "MagePlace",
         "permalink": "mageplace"
     },
-    "milestones": [],
+    "milestones": [
+        {
+            "id": 18908,
+            "description": "Rovio\u00e2\u20ac\u2122s Angry Birds Flies Past Half A Billion Downloads",
+            "stoned_year": 2011,
+            "stoned_month": 11,
+            "stoned_day": 2,
+            "source_url": "http://techcrunch.com/2011/11/02/rovios-angry-birds-reaches-half-a-billion-downloads/",
+            "source_text": "",
+            "source_description": "Rovio\u00e2\u20ac\u2122s Angry Birds Flies Past Half A Billion Downloads",
+            "stoneable_type": "Product",
+            "stoned_value": null,
+            "stoned_value_type": null,
+            "stoned_acquirer": null,
+            "stoneable": {
+                "name": "Angry Birds",
+                "permalink": "angry-birds"
+            }
+        }
+    ],
     "video_embeds": [],
     "external_links": []}
