@@ -1,13 +1,26 @@
 class CrunchbaseClient
   def search query, page
-    response = JSON.parse(RestClient.get('http://api.crunchbase.com/v/1/search.js', params: {query: query, api_key: 'vnqmjpk7xb3cx5tqyh4s5j64', page: page}))
-    #TODO: Make api consistent
-    SearchResult.new(response)
+    JSON.parse(http_get(search_url, {query: query, page: page}))
   end
 
   def get type, permalink
-    #TODO: Remove duplication of key
-    #TODO: Add key to config
-    JSON.parse(RestClient.get("http://api.crunchbase.com/v/1/#{type}/#{permalink}.js", params: {api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'}))
+    JSON.parse(http_get(entity_url(permalink, type)))
+  end
+
+  private
+  def http_get(url, params={})
+    RestClient.get(url, params: {api_key: APP_CONFIG['crunchbase_key']}.merge(params))
+  end
+
+  def entity_url(permalink, type)
+    "#{base_url}/#{type}/#{permalink}.js"
+  end
+
+  def search_url
+    "#{base_url}/search.js"
+  end
+
+  def base_url
+    'http://api.crunchbase.com/v/1'
   end
 end

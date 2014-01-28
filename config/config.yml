@@ -1,0 +1,11 @@
+defaults: &defaults
+  crunchbase_key: vnqmjpk7xb3cx5tqyh4s5j64
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

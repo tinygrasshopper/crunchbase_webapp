@@ -5,7 +5,7 @@ end
 def stub_requests_for_search(term)
   Dir.glob(Rails.root.join("features/mock_responses/search_#{term}_page_*.json")).each_with_index do |path, index|
     stub_request(:get, 'http://api.crunchbase.com/v/1/search.js').
-        with(query: {query: term, api_key: 'vnqmjpk7xb3cx5tqyh4s5j64', page: index.next.to_s}).
+        with(query: {query: term, api_key: APP_CONFIG['crunchbase_key'], page: index.next.to_s}).
         to_return(body: File.read(path))
   end
 
@@ -13,14 +13,14 @@ end
 
 def stub_requests_for_company
   stub_request(:get, 'http://api.crunchbase.com/v/1/company/facebook.js').
-      with(query: {api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'}).
+      with(query: {api_key: APP_CONFIG['crunchbase_key']}).
       to_return(body: File.read(Rails.root.join('features/mock_responses/company_facebook.json')))
 
 end
 
 def stub_requests_for_product
   stub_request(:get, 'http://api.crunchbase.com/v/1/product/facebook-like-button.js').
-      with(query: {api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'}).
+      with(query: {api_key: APP_CONFIG['crunchbase_key']}).
       to_return(body: File.read(Rails.root.join('features/mock_responses/product_facebook_like_button.json')))
 
 end

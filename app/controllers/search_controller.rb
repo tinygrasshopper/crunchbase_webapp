@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def index
     crunchbase_client = CrunchbaseClient.new
-    @results = crunchbase_client.search(params[:query], page) if params[:query].present?
+    @results = SearchResult.new(crunchbase_client.search(params[:query], page)) if params[:query].present?
   end
 
   private

@@ -22,3 +22,7 @@
 .company_image {
     margin-bottom: 5px;
 }
+
+.disabled a {
+    pointer-events: none;
+}

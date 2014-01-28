@@ -9,6 +9,14 @@ module SearchHelper
     else
       product_path id
     end
+  end
 
+  def next_link results
+    'disabled' if results.last?
+  end
+
+
+  def previous_link results
+    'disabled' if results.first?
   end
 end

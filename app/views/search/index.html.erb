@@ -3,7 +3,7 @@
     <%= render 'search/result_set', set: 'products', results: @results.products %>
 
     <ul class="pager col-md-12">
-      <li><a href="<%= root_path(page: @results.page - 1, query: params[:query]).html_safe %>">Previous</a></li>
-      <li><a href="<%= root_path(page: @results.page + 1, query: params[:query]).html_safe %>">Next</a></li>
+      <li class='<%= previous_link(@results) %>'><%= link_to 'Previous', root_path(page: @results.page.pred, query: params[:query]) %></li>
+      <li class='<%= next_link(@results) %>'><%= link_to 'Next', root_path(page: @results.page.next, query: params[:query]) %></li>
     </ul>
 <% end %>

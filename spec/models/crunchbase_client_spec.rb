@@ -18,12 +18,12 @@ describe CrunchbaseClient do
         }
     ]}'
       expect(RestClient).to receive(:get)
-                            .with('http://api.crunchbase.com/v/1/search.js', params: {query: 'test', api_key: 'vnqmjpk7xb3cx5tqyh4s5j64', page: '2'})
+                            .with('http://api.crunchbase.com/v/1/search.js', params: {query: 'test', api_key: APP_CONFIG['crunchbase_key'], page: '2'})
                             .and_return(json_response)
 
       results = subject.search 'test', '2'
 
-      expect(results).to eq(SearchResult.new(JSON.parse(json_response)))
+      expect(results).to eq(JSON.parse(json_response))
     end
   end
 
@@ -33,7 +33,7 @@ describe CrunchbaseClient do
                         "permalink": "facebook"}'
 
       expect(RestClient).to receive(:get)
-                            .with('http://api.crunchbase.com/v/1/company/facebook.js', params: {api_key: 'vnqmjpk7xb3cx5tqyh4s5j64'})
+                            .with('http://api.crunchbase.com/v/1/company/facebook.js', params: {api_key: APP_CONFIG['crunchbase_key']})
                             .and_return(json_response)
 
       entity = subject.get 'company', 'facebook'

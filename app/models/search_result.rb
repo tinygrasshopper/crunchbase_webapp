@@ -11,7 +11,7 @@ class SearchResult
   end
 
   def page
-    @params[:page]
+    @params[:page].to_i
   end
 
   def companies
@@ -20,5 +20,19 @@ class SearchResult
 
   def products
     results.select(&:product?)
+  end
+
+  def first?
+    page == 1
+  end
+
+  def last?
+    total/10 < page
+  end
+
+  private
+
+  def total
+    @params[:total].to_i
   end
 end

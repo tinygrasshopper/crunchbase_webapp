@@ -41,4 +41,41 @@ describe SearchResult do
 
     end
   end
+
+  context 'page' do
+    it 'should return the page number' do
+      search_result = described_class.new(page: '1', results: [{name: 'facebook', namespace: 'company'},
+                                                             {name: 'cycle', namespace: 'product'}])
+
+      expect(search_result.page).to eq(1)
+    end
+  end
+
+  context 'first?' do
+    it 'should be true if its the first page' do
+      search_result = described_class.new(page: '1', results: [])
+
+      expect(search_result).to be_first
+    end
+
+    it 'should be false if its not the first page' do
+      search_result = described_class.new(page: '2', results: [])
+
+      expect(search_result).not_to be_first
+    end
+  end
+
+  context 'last?' do
+    it 'should be true if its the last page' do
+      search_result = described_class.new(page: '3', total: '21', results: [])
+
+      expect(search_result).to be_last
+    end
+
+    it 'should be false if its not the last page' do
+      search_result = described_class.new(page: '1', total: '21', results: [])
+
+      expect(search_result).not_to be_last
+    end
+  end
 end
